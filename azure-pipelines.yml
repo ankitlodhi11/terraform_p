@@ -9,20 +9,18 @@ stages:
       - job: 
         displayName: terraform init
         steps:
-        - task: PowerShell@2
-          displayName: 'Terraform Init'
-          inputs:
-            targetType: 'inline'
-            script: |
-              terraform init -migrate-state
-              terraform init -reconfigure
         - task: TerraformTask@5
           inputs:
             provider: 'azurerm'
-            command: 'plan'
+            command: 'init'
             backendServiceArm: 'data'
             backendAzureRmStorageAccountName: 'stagefile123321'
             backendAzureRmContainerName: 'tfstate'
             backendAzureRmKey: 'dev.terraform'
+        - task: TerraformTask@5
+          inputs:
+            provider: 'azurerm'
+            command: 'plan'
+            environmentServiceNameAzureRM: 'data'
 
         
