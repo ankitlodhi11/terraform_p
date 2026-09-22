@@ -10,9 +10,11 @@ stages:
         displayName: terraform init
         steps:
         - task: PowerShell@2
+          displayName: 'Terraform Init'
           inputs:
             targetType: 'inline'
-            script: 'init -migrate-state'
+            script: |
+              terraform init -migrate-state
         - task: PowerShell@2
           inputs:
             targetType: 'inline'
