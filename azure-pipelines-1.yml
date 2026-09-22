@@ -31,7 +31,7 @@ stages:
         steps:
         - task: ManualValidation@1
           inputs:
-            notifyUsers: 'ankitlodhi11@gmail.com'
+            notifyUsers: 'sbicardankit144@gmail.com'
   - stage: terraformapply
     displayName: terraform & apply
     jobs:
