@@ -1,0 +1,28 @@
+trigger:
+- main
+pool:
+ name: dhurander
+stages:
+  - stage: terraforminit
+    displayName: terraform init
+    jobs:
+      - job: 
+        displayName: terraform init
+        steps:
+        - task: TerraformInstaller@1
+          inputs:
+            terraformVersion: 'latest'
+        - task: TerraformTask@5
+          inputs:
+            provider: 'azurerm'
+            command: 'init'
+            backendServiceArm: 'data'
+            backendAzureRmStorageAccountName: 'stagefile123321'
+            backendAzureRmContainerName: 'tfstate'
+            backendAzureRmKey: 'dev.terraform'
+        - task: TerraformTask@5
+          inputs:
+            provider: 'azurerm'
+            command: 'plan'
+            environmentServiceNameAzureRM: 'data'
+        
