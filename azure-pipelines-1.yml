@@ -10,10 +10,17 @@ stages:
       - job: 
         displayName: terraform init
         steps:
+        - task: TerraformInstaller@1
+          inputs:
+            terraformVersion: '4.70.0'
         - task: TerraformTask@5
           inputs:
             provider: 'azurerm'
-            command: 'init -upgrade'
+            command: 'init'
+            backendServiceArm: 'data'
+            backendAzureRmStorageAccountName: 'stagefile123321'
+            backendAzureRmContainerName: 'tfstate'
+            backendAzureRmKey: 'dev.terraform'
         - task: TerraformTask@5
           inputs:
             provider: 'azurerm'
@@ -39,7 +46,7 @@ stages:
         - task: TerraformTask@5
           inputs:
             provider: 'azurerm'
-            command: 'init -upgrade'
+            command: 'init'
             backendServiceArm: 'data'
             backendAzureRmStorageAccountName: 'stagefile123321'
             backendAzureRmContainerName: 'tfstate'
