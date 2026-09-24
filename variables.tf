@@ -7,3 +7,13 @@ variable "rgs" {
    
   }))
   }
+variable "vnets" {
+  description = "List of Virtual Networks"
+
+  type = map(object({
+    name          = string
+    address_space = list(string)
+    location      = string
+    rg            = string
+  }))
+}
