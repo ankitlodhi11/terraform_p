@@ -1,7 +1,8 @@
 trigger:
 - main
+- feature
 pool:
- name: agentvm-pool
+ name: dhurander
 stages:
   - stage: terraforminit
     displayName: terraform init
