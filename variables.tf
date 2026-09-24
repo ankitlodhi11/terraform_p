@@ -17,3 +17,25 @@ variable "vnets" {
     rg            = string
   }))
 }
+
+variable "subnets" {
+  description = "Subnet configuration"
+
+  type = map(object({
+    name          = string
+    rg            = string
+    vnet          = string
+    address_space = list(string)
+  }))
+}
+
+variable "nics" {
+  description = "Network Interface configuration"
+
+  type = map(object({
+    name     = string
+    location = string
+    rg       = string
+    subnet   = string
+  }))
+}
