@@ -13,7 +13,7 @@ stages:
         - task: TerraformTask@5
           inputs:
             provider: 'azurerm'
-            command: 'init'
+            command: 'init -upgrade'
             backendServiceArm: 'data'
             backendAzureRmStorageAccountName: 'stagefile123321'
             backendAzureRmContainerName: 'tfstate'
@@ -43,7 +43,7 @@ stages:
         - task: TerraformTask@5
           inputs:
             provider: 'azurerm'
-            command: 'init'
+            command: 'init -upgrade'
             backendServiceArm: 'data'
             backendAzureRmStorageAccountName: 'stagefile123321'
             backendAzureRmContainerName: 'tfstate'
