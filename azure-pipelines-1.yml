@@ -44,10 +44,9 @@ stages:
         displayName: apply
         condition: succeeded()
         steps:
-        - task: TerraformTask@5
+        - task: TerraformInstaller@1
           inputs:
-            terraformVersion: '1.13.4'
-            
+            terraformVersion: '1.13.4'            
         - task: TerraformTask@5
           inputs:
             provider: 'azurerm'
