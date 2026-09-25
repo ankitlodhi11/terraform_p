@@ -39,3 +39,45 @@ variable "nics" {
     subnet   = string
   }))
 }
+
+variable "vmss" {
+
+  type = map(object({
+
+    name                 = string
+    rg                   = string
+    location             = string
+    sku                  = string
+    instances             = number
+    admin_username       = string
+    admin_password       = string
+    computer_name_prefix = string
+    vnet                 = string
+    tags                 = map(string)
+
+  }))
+}
+
+variable "nsgs" {
+  type = map(object({
+
+    name     = string
+    rg       = string
+    location = string
+
+    rules = map(object({
+
+      priority                   = number
+      direction                  = string
+      access                     = string
+      protocol                   = string
+      source_port_range          = string
+      destination_port_range     = string
+      source_address_prefix      = string
+      destination_address_prefix = string
+
+    }))
+
+  }))
+}
+
